@@ -1,6 +1,6 @@
 # Circle Sound Visualiser Setup Instructions
 
-Add a new Solid Layer the size of your wallpaper.
+Choose the layer you want to add the effect to.
 
 Add a NEW effect and call it "Circle Visualiser".
 

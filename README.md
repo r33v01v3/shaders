@@ -1,4 +1,4 @@
-# shaders
+# Circle Sound Visualiser Setup Instructions
 
 Add a new Solid Layer the size of your wallpaper.
 

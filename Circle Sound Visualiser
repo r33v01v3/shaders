@@ -1,4 +1,6 @@
 //r33v01v3 2021
+//Based on https://steamcommunity.com/sharedfiles/filedetails/?id=2546268111
+
 #include "common_blending.h"
 
 // [COMBO] {"material":"ui_editor_properties_blend_mode","combo":"BLENDMODE","type":"imageblending","default":0}

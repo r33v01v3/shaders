@@ -37,5 +37,5 @@ void main() {
 	float circ_a = circ*u_opacity;
 	vec3 col_out = ApplyBlending(BLENDMODE, albedo.rgb, col.rgb, circ_a * mask.r);
 	
-	gl_FragColor = vec4(col_out,circ_a);
+	gl_FragColor = vec4(col_out,albedo.a);
 }

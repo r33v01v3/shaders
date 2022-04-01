@@ -1,3 +1,4 @@
+
 //r33v01v3 2021
 //Based on https://steamcommunity.com/sharedfiles/filedetails/?id=2546268111
 
@@ -18,6 +19,7 @@ uniform float u_Thickness; // {"material":"Thickness","int":false,"default":1.0,
 uniform float u_af; // {"material":"Audio Frequency","int":true,"default":5,"range":[0,15]}
 uniform float u_al; // {"material":"Audio Level","default":0.5,"range":[0,1]}
 uniform vec3 u_col; // {"material":"Colour","type":"color","default":"1 1 1"}
+uniform float u_glow; // {"material":"Glow","default":0.5,"range":[0,1]}
 uniform sampler2D g_Texture1; // {"combo":"MASK","default":"util/white","label":"ui_editor_properties_opacity_mask","material":"mask","mode":"opacitymask","paintdefaultcolor":"0 0 0 1"}
 uniform float g_AudioSpectrum16Left[16];
 
@@ -32,10 +34,10 @@ void main() {
 	vec3 col = CAST3(0.0);
 	float my_audio = g_AudioSpectrum16Left[int(u_af)]*(u_al*0.2);
 	float circ;
-	circ = 0.01 / abs(u_Scale + (sin((atan2(uv.y, uv.x) + g_Time * u_Speed) * u_waves) * ((u_Amplitude*0.1)+my_audio) ) - length(uv)) * u_Thickness;
+	circ = (0.02*u_glow) / abs(u_Scale + (sin((atan2(uv.y, uv.x) - g_Time * u_Speed) * u_waves) * ((u_Amplitude*0.1)+my_audio) ) - length(uv)) * u_Thickness;
 	col+= circ*u_col;
 	float circ_a = circ*u_opacity;
 	vec3 col_out = ApplyBlending(BLENDMODE, albedo.rgb, col.rgb, circ_a * mask.r);
 	
-	gl_FragColor = vec4(col_out,albedo.a);
+	gl_FragColor = vec4(col_out,albedo.a*u_opacity);
 }
